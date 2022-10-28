@@ -1,0 +1,44 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+ mat-select{
+    margin-top: 10px;
+ }
+ table {
+   width: 100%;
+   margin:30px;
+ }
+
+ .outbtn{
+  border: none;
+  color: white;
+  padding:10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: rgb(161, 54, 54);
+  border-radius: 7px;
+ 
+ }
+ .outbtn:hover{
+ background-color: rgb(146, 146, 120);
+ }
+ mat-toolbar{
+  font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: normal;
+  margin: 0;
+  height: 56px;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 16px;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  white-space: wrap;
+  background: #3f51b5;
+  color: #fff;
+ }

@@ -1,0 +1,52 @@
+<p>
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <span>Angular-FIrebase-AngularMaterial-CRUD-Demo</span>
+      <span class="example-spacer"></span>
+      <button (click)="logout()" class="outbtn" mat-button  >logout</button>
+      <!-- {{dataSource}} -->
+      
+    </mat-toolbar>
+</p>
+
+<div class="container">
+   <div>
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex.Abebe" #input>
+    </mat-form-field>
+    
+    <div class="mat-elevation-z8">
+      <table #table mat-table [dataSource]="dataSource" matSort> 
+        
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>email</th>
+          <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+        </ng-container> 
+    
+       
+        <ng-container matColumnDef="last_login">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> last_login </th>
+         <ng-template #elseBlock>Content to render when condition is false.</ng-template>
+          <td mat-cell *matCellDef="let row"> {{row.last_login}}</td>
+         
+        </ng-container> 
+
+        <ng-container matColumnDef="username">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>username</th>
+          <td mat-cell *matCellDef="let row"> {{row.username}} </td>
+        </ng-container> 
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+     
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons  aria-label="Select page of users"></mat-paginator>
+    </div>
+    
+   </div>
+</div>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angular</title>
+  </head>
+  <body>
+     <div style="background-color: rgb(179, 174, 168);text-align: center;">{{userForm.value |json}} </div>
+    
+
+     
+  <div class="conainer-fluid">
+    <form style="background-color:beige;margin: 20px 300px;" #userForm="ngForm" novalidate (ngSubmit)="onSubmit">
+    
+       {{userForm.form.valid}}
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" required #name="ngModel" id="exampleInputPassword1" name="password" [(ngModel)]="userModel.password">
+         <div *ngIf="name.errors && (name.invalid && name.touched)">
+               <div class="text-danger" *ngIf="name.errors?.['required']">password is required</div>
+              <div  class="text-danger" *ngIf="name.errors?.['pattern']"> password must be 10 digits</div>
+         </div>
+
+
+         <select 
+         #topic="ngModel" style="margin-top:20px" [(ngModel)]="userModel.topic" 
+            name="topic" class="form-select" aria-label="Default select example">
+          <option value="default">which subject are you interested ?</option>
+          <option *ngFor="let topic of topics">{{topic}}</option>
+        </select>
+      </div>
+      <div class="mt-20 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" name="checkBox" [(ngModel)]="userModel.check">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <button [disabled]="userForm.form.invalid"  type="submit" class="mt-4 btn btn-primary">Submit Form</button>
+    </form>
+  </div>
+  </body>
+</html>
+ 
+ 
+ 
+ 

@@ -1,0 +1,10 @@
+<div id="login-box">
+    <div class="left">
+        <form #LoginForm="ngForm" (ngSubmit)="registerUser(LoginForm.value)">
+            <input type="text" ngModel id="username" name="username" placeholder="username" />
+            <input type="text" ngModel id="email" name="email" placeholder="E-mail" />
+            <input type="password" ngModel id="password" name="password" placeholder="Password" />
+            <input type="submit" id="saveData" name="signup_submit" value="register" />
+        </form>       
+    </div>
+  </div>

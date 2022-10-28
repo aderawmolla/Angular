@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fir-auth-5b902": {
+      "hosting": {
+        "Authentication": [
+          "fir-auth-5b902"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fir-auth-5b902"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "productList": [
+    {
+      "productName": "food",
+      "category": "accent",
+      "freshness": "Brand new",
+      "price": -8,
+      "comment": "new comment",
+      "date": "2022-10-19T21:00:00.000Z",
+      "id": 1
+    },
+    {
+      "productName": "product2",
+      "category": "warn",
+      "freshness": "Refurbished",
+      "price": 18,
+      "comment": "comment2",
+      "date": "2022-10-29T21:00:00.000Z",
+      "id": 2
+    },
+    {
+      "productName": "new product",
+      "category": "accent",
+      "freshness": "Second hand",
+      "price": 5,
+      "comment": "add comment",
+      "date": "2022-10-03T21:00:00.000Z",
+      "id": 3
+    },
+    {
+      "productName": "foodd",
+      "category": "accent",
+      "freshness": "Second hand",
+      "price": 12,
+      "comment": "i like comment",
+      "date": "2022-10-13T21:00:00.000Z",
+      "id": 4
+    },
+    {
+      "productName": "accademic",
+      "category": "warn",
+      "freshness": "Second hand",
+      "price": 4,
+      "comment": "my comment",
+      "date": "2022-10-23T21:00:00.000Z",
+      "id": 5
+    }
+  ]
+}

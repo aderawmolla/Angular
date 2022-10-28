@@ -1,0 +1,10 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+ mat-select{
+    margin-top: 10px;
+ }
+ table {
+   width: 100%;
+   margin:20px;
+ }

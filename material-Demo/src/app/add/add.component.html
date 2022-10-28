@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>Product Registration</h1>
+<div mat-dialog-content>
+   <form [formGroup]="productForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Product Name</mat-label>
+      <input formControlName="productName" matInput placeholder="Enter Product Name">
+     </mat-form-field>
+     <mat-form-field appearance="outline">
+      <mat-label>Product Category</mat-label>
+        <mat-select  formControlName="category">
+          <mat-option value="primary">Primary</mat-option>
+          <mat-option value="accent">Accent</mat-option>
+          <mat-option value="warn">Warn</mat-option>
+        </mat-select>
+     </mat-form-field>
+     <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input formControlName="date" matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker [dateClass]="" #picker></mat-datepicker>
+    </mat-form-field>
+    <hr/>
+    <label id="example-radio-group-label">Pick your favorite type</label>
+  <mat-radio-group formControlName="freshness"
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group"
+    >
+    <mat-radio-button class="example-radio-button" *ngFor="let fresh of freshness" [value]="fresh">
+      {{fresh}}
+    </mat-radio-button>
+   </mat-radio-group>
+   <mat-form-field appearance="outline">
+      <mat-label>Price</mat-label>
+      <input  formControlName="price"type="number" matInput placeholder="Enter Price">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>comment</mat-label>
+       <textarea formControlName="comment" matInput></textarea>
+    </mat-form-field>
+
+   </form>
+  
+   <div mat-dialog-actions [align]="'end'">
+    <button (click)="addProduct()" mat-raised-button color="primary">{{saveoredit}}</button>
+    <button mat-raised-button color="warn">close</button>
+  </div>
+</div>
