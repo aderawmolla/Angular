@@ -46,7 +46,8 @@ import { MatInputModule } from '@angular/material/input';
     MatTableModule,
     MatNativeDateModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

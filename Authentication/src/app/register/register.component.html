@@ -1,9 +1,13 @@
 <div id="login-box">
     <div class="left">
-        <form #LoginForm="ngForm" (ngSubmit)="registerUser(LoginForm.value)">
-            <input type="text" ngModel id="username" name="username" placeholder="username" />
-            <input type="text" ngModel id="email" name="email" placeholder="E-mail" />
-            <input type="password" ngModel id="password" name="password" placeholder="Password" />
+        <form [formGroup]="userForm" #LoginForm="ngForm" (ngSubmit)="registerUser(LoginForm.value)">
+            <input formControlName="username"  type="text" ngModel id="username" name="username" placeholder="enter username" />
+            <span class="error"*ngIf="username.invalid && username.touched" class="error">username is required</span>
+            <input formControlName="email" type="text" ngModel id="email" name="email" placeholder="enter email" />
+            <span class="error"*ngIf="email.invalid && email.touched" class="error">email is required</span>
+             <div>
+            <input formControlName="password"type="password" ngModel id="password" name="password" placeholder="enter Password" />
+            <span  class="error" *ngIf="password.invalid && password.touched">password is required</span></div>
             <input type="submit" id="saveData" name="signup_submit" value="register" />
         </form>       
     </div>

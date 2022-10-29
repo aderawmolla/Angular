@@ -1,24 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
-import { LoginComponent } from '../login/login.component';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  constructor(private auth:AuthService,private router:Router) { }
+  userForm=new FormGroup({
+    username:new FormControl("",Validators.required),
+    email:new FormControl("",Validators.required),
+    password:new FormControl("",Validators.required)
+   })
+  constructor(private auth:AuthService) { }
   registerUser(value:any){
-    this.auth.registerService(value).then((res)=>{
-      this.router.navigate(['login'])
+  this.auth.registerService(value).then((res)=>{
+      
     }).catch((error)=>{
-      this.router.navigate(['register'])
+      
     })
    
   }
+  get username(){
+    return this.userForm.get('username')
+  }
+  get email(){
+    return this.userForm.get('email')
+   }
+   get password(){
+    return this.userForm.get('password')
+   }
 
   ngOnInit(): void {
   }

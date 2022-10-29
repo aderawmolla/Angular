@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { signInWithPopup,signInWithRedirect,getAuth,GoogleAuthProvider,Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { Database, set,get, ref, query,getDatabase,update,limitToLast } from '@angular/fire/database';
+import { Router } from '@angular/router';
 import { child, onValue } from 'firebase/database';
 import { Observable } from 'rxjs';
 import { __values } from 'tslib';
@@ -12,14 +13,16 @@ import { __values } from 'tslib';
 export class AuthService {
   title = 'angular-fire';
   users=[];
-  constructor(public auth: Auth, public database: Database) { }
+  constructor( private router:Router,public auth: Auth, public database: Database) { }
+
+  //register service
+
   registerService(value: any) {
 
     return createUserWithEmailAndPassword(this.auth,value.email,value.password)
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log(userCredential)
         console.log(user)
 
         set(ref(this.database, 'users/' + user.uid), {
@@ -28,24 +31,25 @@ export class AuthService {
           last_login:"only registered user"
         });
 
-        alert('user created! ');
+        alert('user reated successfully! ');
+        this.router.navigate(['login'])
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-
-
         alert(errorMessage);
         // ..
       });
   }
 
   loginService(value: any){
-    
+   
+    //login service
   return signInWithEmailAndPassword(this.auth,value.email, value.password)
       .then((userCredential) => {
         // Signed in 
+       
         const user = userCredential.user;
 
         const date = new Date();
@@ -54,6 +58,7 @@ export class AuthService {
     
         });
         alert("successflly sign")
+        this.router.navigate(['home'])
        //all logics
       })
       .catch((error) => {
@@ -61,15 +66,22 @@ export class AuthService {
         const errorMessage = error.message;
         console.log(errorCode)
         alert(errorMessage)
+        
       });
   }
+
+  //logout service
   signOutService(){
-   return   signOut(this.auth).then(() => {
-      
+   return  signOut(this.auth).then(() => {
+     alert("signout successful")
+      this.router.navigate(['login'])
       }).catch((error) => {
         // An error happened.
       });
   }
+
+
+//get all data  
 getAll(){
 const db = getDatabase();
 const starCountRef = ref(db);
@@ -80,6 +92,19 @@ get(child(starCountRef,"users/")).then((snapshot)=>{
   })
   
 })
+}
 
+//login with google account
+googleService(){
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+  return signInWithPopup(auth, provider).then(()=>{
+  this.router.navigate(['home'])
+  }).catch((error)=>{
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode)
+    alert(errorMessage)
+  })
 }
 }

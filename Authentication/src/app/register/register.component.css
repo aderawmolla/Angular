@@ -45,7 +45,8 @@ input[type="text"],
 input[type="password"] {
     display: block;
     box-sizing: border-box;
-    margin-bottom: 20px;
+    margin-bottom: 3px;
+    margin-top: 30px;
     padding: 4px;
     width: 220px;
     height: 32px;
@@ -162,7 +163,7 @@ button.social-signin.twitter {
 button.social-signin.google {
     background: #DD4B39;
 }
-/* .text-right.forget-pass a{
+.text-right.forget-pass a{
     font-size: 12px;
     color: #d39e00;
     text-decoration: none;
@@ -174,6 +175,9 @@ button.social-signin.google {
     color: #d39e00;
     font-weight: 600;
     text-decoration: none;
-  } */
+  }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.error{
+    color:red;
+}

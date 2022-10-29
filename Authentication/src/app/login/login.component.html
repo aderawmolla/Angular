@@ -1,10 +1,15 @@
 <div id="login-box">
 
     <div class="left">
-        <form [formGroup]="userForm" #loginFOrm="ngForm"(ngSubmit)="login(userForm.value)">
-            <input formControlName="email" type="text" [(ngModel)]="email" id="email" name="email" placeholder="enter e-mail" />
-            <input formControlName="password" type="password" ngModel id="password" name="password" placeholder="enter Password" />
-  
+        <form  [formGroup]="userForm" #loginForm="ngForm"(ngSubmit)="login(userForm.value)">
+            <div class="form-group">
+            <input formControlName="email" type="text"   name="email" placeholder="Enter E-mail" />
+            <span *ngIf="email.invalid && email.touched" class="error">email is required</span>
+            </div>
+            <div class="form-groupp">
+            <input formControlName="password" type="password" ngModel id="password" name="password" placeholder="Enter Password" />
+            <span class="error" *ngIf="password.invalid &&password.touched">password is required</span>
+            </div>
             <input type="submit" id="saveData" name="signup_submit" value="login" />
         </form>
         <div class="text-centerr sign-up">
@@ -13,9 +18,9 @@
     </div>
     <div class="right">
         <span class="loginwith">Sign in with<br />social network</span>
-        <button class="social-signin facebook">Log in with facebook</button>
+        <button (click)="googleLogin()" class="social-signin google" id='login'>Log in with Google</button>
+        <button class="social-signin facebook">Log in with Facebook</button>
         <button class="social-signin twitter">Log in with Twitter</button>
-        <button class="social-signin google" id='login'>Log in with Google+</button>
     </div> 
     <div class="or">OR</div>
   </div>
